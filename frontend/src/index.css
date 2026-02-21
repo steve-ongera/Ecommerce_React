@@ -1,68 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;1,6..12,400&family=Nunito:wght@700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --jumia-orange: #f68b1e;
+  --jumia-dark-orange: #e6780a;
+  --jumia-light-orange: #fff3e0;
+  --jumia-red: #e74c3c;
+  --jumia-green: #27ae60;
+  --jumia-gray: #f5f5f5;
+  --jumia-dark: #1a1a1a;
+  --jumia-text: #3d3d3d;
+  --jumia-muted: #888;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.08);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.12);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,.16);
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
+* { box-sizing: border-box; }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  font-family: 'Nunito Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #f5f5f5;
+  color: var(--jumia-text);
+  -webkit-font-smoothing: antialiased;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #c1c1c1; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #f68b1e; }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+/* Line clamp utilities */
+.line-clamp-1 { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+.line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* Jumia-style card */
+.product-card {
+  background: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
   cursor: pointer;
-  transition: border-color 0.25s;
+  border: 1px solid #e8e8e8;
 }
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.product-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* Shimmer loading */
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
 }
+.shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Banner slider */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.banner-slide { animation: fadeIn 0.5s ease; }
+
+/* Mobile drawer */
+.drawer-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 100;
+  animation: fadeIn 0.2s ease;
+}
+.drawer-panel {
+  position: fixed; top: 0; left: 0; bottom: 0; width: 280px;
+  background: #fff; z-index: 101; overflow-y: auto;
+  animation: slideIn 0.25s ease;
+}
+@keyframes slideIn { from { transform: translateX(-100%); } to { transform: translateX(0); } }
+
+/* Range input */
+input[type=range] {
+  -webkit-appearance: none;
+  height: 4px; background: #e8e8e8; border-radius: 2px; outline: none;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 16px; height: 16px;
+  background: var(--jumia-orange); border-radius: 50%; cursor: pointer;
+}
+
+/* Star rating */
+.star-filled { color: #f4a100; fill: #f4a100; }
+.star-empty { color: #ddd; fill: #ddd; }
+
+/* Skeleton */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+/* Flash sale countdown */
+@keyframes pulse-red {
+  0%, 100% { background-color: #e74c3c; }
+  50% { background-color: #c0392b; }
+}
+.countdown-box {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; border-radius: 4px;
+  background: #1a1a1a; color: #fff;
+  font-weight: 800; font-size: 13px; font-family: 'Nunito', sans-serif;
+}
+
+/* Button variants */
+.btn-primary {
+  background: var(--jumia-orange);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+.btn-primary:hover { background: var(--jumia-dark-orange); }
+.btn-primary:active { transform: scale(0.98); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--jumia-orange);
+  border: 1.5px solid var(--jumia-orange);
+  padding: 9px 20px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-outline:hover { background: var(--jumia-light-orange); }
+
+/* Badge */
+.badge-discount {
+  background: var(--jumia-red);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 2px 5px;
+  border-radius: 2px;
+}
+.badge-new {
+  background: var(--jumia-green);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 5px;
+  border-radius: 2px;
+}
+
+/* Section header */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 2px solid var(--jumia-orange);
+  background: #fff;
+  border-radius: 4px 4px 0 0;
+}
+.section-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--jumia-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  font-family: 'Nunito', sans-serif;
+}
+.section-link {
+  font-size: 13px;
+  color: var(--jumia-orange);
+  font-weight: 600;
+  text-decoration: none;
+}
+.section-link:hover { text-decoration: underline; }
+
+/* Jumia nav link */
+.nav-link {
+  color: rgba(255,255,255,0.9);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 3px;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+.nav-link:hover { background: rgba(255,255,255,0.15); color: #fff; }
+
+/* Form inputs */
+.form-input {
+  width: 100%;
+  border: 1.5px solid #ddd;
+  border-radius: 4px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: border-color 0.2s;
+  outline: none;
+  background: #fff;
+}
+.form-input:focus { border-color: var(--jumia-orange); box-shadow: 0 0 0 3px rgba(246,139,30,0.1); }
+
+/* Order status colors */
+.status-pending { background: #fff3cd; color: #856404; }
+.status-confirmed { background: #d1ecf1; color: #0c5460; }
+.status-processing { background: #e2d9f3; color: #563d7c; }
+.status-shipped { background: #d4edda; color: #155724; }
+.status-delivered { background: #d4edda; color: #155724; }
+.status-cancelled { background: #f8d7da; color: #721c24; }
+
+/* Responsive horizontal scroll */
+.scroll-x {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scroll-x::-webkit-scrollbar { display: none; }
