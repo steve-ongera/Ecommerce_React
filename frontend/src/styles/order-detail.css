@@ -1,0 +1,483 @@
+/* src/styles/order-detail.css */
+/* Order detail page specific styles - leverages design tokens from index.css */
+
+/* ── Page container ──────────────────────────────────────────────────────── */
+.order-detail-page {
+  min-height: 100vh;
+  background: var(--jumia-gray);
+}
+
+/* ── Order detail container ──────────────────────────────────────────────── */
+.order-detail-container {
+  max-width: 672px;
+  margin: 0 auto;
+  padding: 24px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media (min-width: 640px) {
+  .order-detail-container {
+    padding: 24px 16px;
+  }
+}
+
+/* ── Header card ─────────────────────────────────────────────────────────── */
+.order-header {
+  background: var(--jumia-white);
+  border-radius: 4px;
+  box-shadow: var(--shadow-sm);
+  padding: 16px;
+}
+
+.order-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  color: var(--jumia-muted);
+  margin-bottom: 4px;
+}
+
+.order-breadcrumb-link {
+  color: var(--jumia-muted);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.order-breadcrumb-link:hover {
+  color: var(--jumia-orange);
+}
+
+.order-breadcrumb-arrow {
+  font-size: 0.75rem;
+  color: var(--jumia-muted);
+}
+
+.order-breadcrumb-current {
+  color: var(--jumia-muted);
+}
+
+.order-number {
+  font-weight: 900;
+  font-size: 1.125rem;
+  color: var(--jumia-dark);
+  font-family: 'Nunito', sans-serif;
+  margin-bottom: 2px;
+}
+
+.order-date {
+  font-size: 0.75rem;
+  color: var(--jumia-muted);
+}
+
+.order-header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.order-status-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+  text-transform: capitalize;
+}
+
+.order-payment-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.order-payment-badge--paid {
+  background: #e8f5e9;
+  color: var(--jumia-green);
+}
+
+.order-payment-badge--pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+/* ── Progress tracker ────────────────────────────────────────────────────── */
+.order-progress {
+  background: var(--jumia-white);
+  border-radius: 4px;
+  box-shadow: var(--shadow-sm);
+  padding: 20px;
+}
+
+.order-progress-title {
+  font-weight: 900;
+  font-size: 0.875rem;
+  color: var(--jumia-dark);
+  margin-bottom: 16px;
+  font-family: 'Nunito', sans-serif;
+}
+
+.order-steps {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.order-steps-progress-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 16px;
+  height: 2px;
+  background: var(--jumia-border);
+}
+
+.order-steps-progress-fill {
+  position: absolute;
+  left: 0;
+  top: 16px;
+  height: 2px;
+  background: var(--jumia-green);
+  transition: width 0.3s ease;
+}
+
+.order-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  z-index: 10;
+  flex: 1;
+}
+
+.order-step-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 900;
+  border: 2px solid;
+  transition: all 0.2s;
+}
+
+.order-step-circle--completed {
+  background: var(--jumia-green);
+  border-color: var(--jumia-green);
+  color: var(--jumia-white);
+}
+
+.order-step-circle--current {
+  background: var(--jumia-orange);
+  border-color: var(--jumia-orange);
+  color: var(--jumia-white);
+}
+
+.order-step-circle--pending {
+  background: var(--jumia-white);
+  border-color: var(--jumia-border);
+  color: var(--jumia-muted);
+}
+
+.order-step-circle i {
+  font-size: 0.875rem;
+}
+
+.order-step-label {
+  font-size: 0.7rem;
+  text-align: center;
+  line-height: 1.3;
+  text-transform: capitalize;
+  max-width: 60px;
+}
+
+.order-step-label--active {
+  font-weight: 700;
+  color: var(--jumia-dark);
+}
+
+.order-step-label--inactive {
+  color: var(--jumia-muted);
+}
+
+/* ── Section cards ───────────────────────────────────────────────────────── */
+.order-section {
+  background: var(--jumia-white);
+  border-radius: 4px;
+  box-shadow: var(--shadow-sm);
+  padding: 16px;
+}
+
+.order-section-title {
+  font-weight: 900;
+  font-size: 0.875rem;
+  color: var(--jumia-dark);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Nunito', sans-serif;
+}
+
+.order-section-title i {
+  color: var(--jumia-orange);
+  font-size: 1rem;
+}
+
+/* ── Items list ──────────────────────────────────────────────────────────── */
+.order-items-divider {
+  border-top: 1px solid var(--jumia-border);
+}
+
+.order-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+}
+
+.order-item:first-child {
+  padding-top: 0;
+}
+
+.order-item:last-child {
+  padding-bottom: 0;
+}
+
+.order-item-image {
+  width: 56px;
+  height: 56px;
+  background: var(--jumia-gray);
+  border-radius: 4px;
+  border: 1px solid var(--jumia-border);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.order-item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.order-item-image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+}
+
+.order-item-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.order-item-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--jumia-dark);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 2px;
+}
+
+.order-item-meta {
+  font-size: 0.7rem;
+  color: var(--jumia-muted);
+}
+
+.order-item-price {
+  font-weight: 900;
+  font-size: 0.875rem;
+  color: var(--jumia-dark);
+  flex-shrink: 0;
+  font-family: 'Nunito', sans-serif;
+}
+
+/* ── Address card ────────────────────────────────────────────────────────── */
+.order-address-name {
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: var(--jumia-dark);
+  margin-bottom: 2px;
+}
+
+.order-address-line {
+  font-size: 0.875rem;
+  color: #4a4a4a;
+  line-height: 1.5;
+}
+
+.order-address-phone {
+  font-size: 0.75rem;
+  color: var(--jumia-muted);
+  margin-top: 2px;
+}
+
+/* ── Payment summary ─────────────────────────────────────────────────────── */
+.order-payment-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.order-payment-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  color: #4a4a4a;
+}
+
+.order-payment-row--shipping-free {
+  color: var(--jumia-green);
+  font-weight: 600;
+}
+
+.order-payment-row--total {
+  font-weight: 900;
+  font-size: 1rem;
+  border-top: 1px solid var(--jumia-border);
+  padding-top: 8px;
+  margin-top: 4px;
+}
+
+.order-total {
+  color: var(--jumia-red);
+  font-family: 'Nunito', sans-serif;
+}
+
+/* ── Action buttons ──────────────────────────────────────────────────────── */
+.order-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.order-cancel-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  border: 2px solid #fecaca;
+  border-radius: 4px;
+  background: none;
+  color: var(--jumia-red);
+  font-weight: 700;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.order-cancel-btn:hover {
+  background: #fef2f2;
+  border-color: var(--jumia-red);
+}
+
+.order-cancel-btn i {
+  font-size: 1rem;
+}
+
+.order-shop-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  border: 1px solid var(--jumia-border);
+  border-radius: 4px;
+  background: none;
+  color: #4a4a4a;
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: all 0.15s;
+}
+
+.order-shop-btn:hover {
+  background: var(--jumia-gray);
+  border-color: #ccc;
+}
+
+/* ── Skeleton loading ────────────────────────────────────────────────────── */
+.order-skeleton {
+  width: 100%;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  animation: shimmer 1.5s infinite;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+  background-size: 800px 100%;
+}
+
+/* ── Utility overrides ───────────────────────────────────────────────────── */
+.order-detail-page .status-pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.order-detail-page .status-confirmed {
+  background: #d1ecf1;
+  color: #0c5460;
+}
+
+.order-detail-page .status-processing {
+  background: #e2d9f3;
+  color: #563d7c;
+}
+
+.order-detail-page .status-shipped {
+  background: #d4edda;
+  color: #155724;
+}
+
+.order-detail-page .status-delivered {
+  background: #d4edda;
+  color: #155724;
+}
+
+.order-detail-page .status-cancelled {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+/* ── Responsive adjustments ───────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .order-header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .order-header-right {
+    align-items: flex-start;
+    width: 100%;
+  }
+  
+  .order-step-label {
+    font-size: 0.6rem;
+  }
+  
+  .order-item {
+    flex-wrap: wrap;
+  }
+  
+  .order-item-price {
+    width: 100%;
+    text-align: left;
+    margin-left: 68px;
+  }
+  
+  .order-actions {
+    flex-direction: column;
+  }
+}
