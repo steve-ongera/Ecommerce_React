@@ -1,0 +1,282 @@
+/* src/styles/register.css */
+/* Register page specific styles - leverages design tokens from index.css */
+
+/* ── Page container ──────────────────────────────────────────────────────── */
+.register-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: var(--jumia-gray);
+}
+
+/* ── Form container ──────────────────────────────────────────────────────── */
+.register-container {
+  width: 100%;
+  max-width: 560px; /* Slightly larger than login for more form fields */
+}
+
+/* ── Header ──────────────────────────────────────────────────────────────── */
+.register-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.register-logo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  text-decoration: none;
+}
+
+.register-logo-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--jumia-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.register-logo-icon span {
+  color: var(--jumia-white);
+  font-weight: 900;
+  font-size: 1.125rem;
+  font-family: 'Nunito', sans-serif;
+}
+
+.register-logo-text {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: var(--jumia-dark);
+  font-family: 'Nunito', sans-serif;
+}
+
+.register-header-title {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--jumia-dark);
+  font-family: 'Nunito', sans-serif;
+  margin-bottom: 4px;
+}
+
+.register-header-subtitle {
+  color: var(--jumia-muted);
+  font-size: 0.875rem;
+}
+
+/* ── Form card ───────────────────────────────────────────────────────────── */
+.register-card {
+  background: var(--jumia-white);
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+  padding: 24px;
+}
+
+/* ── Form ────────────────────────────────────────────────────────────────── */
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Form field group */
+.register-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.register-field-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #4a4a4a;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.register-required-star {
+  color: #f87171; /* Light red */
+  margin-left: 2px;
+}
+
+/* Two-column layout for first/last name */
+.register-name-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* Password field with toggle */
+.register-password-wrapper {
+  position: relative;
+}
+
+.register-password-input {
+  padding-right: 40px; /* Space for toggle button */
+}
+
+.register-password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--jumia-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s;
+}
+
+.register-password-toggle:hover {
+  color: var(--jumia-orange);
+}
+
+/* ── Role selection cards ────────────────────────────────────────────────── */
+.register-role-container {
+  margin-top: 4px;
+}
+
+.register-role-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #4a4a4a;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.register-role-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.register-role-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 12px;
+  border: 2px solid var(--jumia-border);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.register-role-card:hover {
+  border-color: #fcd6b0; /* Light orange */
+  background: #fff9f0;
+}
+
+.register-role-card--selected {
+  border-color: var(--jumia-orange);
+  background: var(--jumia-light-orange);
+}
+
+.register-role-radio {
+  margin-top: 3px;
+  accent-color: var(--jumia-orange);
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.register-role-content {
+  flex: 1;
+}
+
+.register-role-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--jumia-dark);
+  line-height: 1.3;
+}
+
+.register-role-subtitle {
+  font-size: 0.7rem;
+  color: var(--jumia-muted);
+  margin-top: 2px;
+}
+
+/* ── Submit button ───────────────────────────────────────────────────────── */
+.register-submit-btn {
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 1rem;
+  margin-top: 8px;
+}
+
+.register-submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Footer ──────────────────────────────────────────────────────────────── */
+.register-footer {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.register-footer-text {
+  font-size: 0.875rem;
+  color: var(--jumia-muted);
+}
+
+.register-footer-link {
+  color: var(--jumia-orange);
+  font-weight: 700;
+  text-decoration: none;
+  margin-left: 4px;
+}
+
+.register-footer-link:hover {
+  text-decoration: underline;
+}
+
+/* ── Utility overrides ───────────────────────────────────────────────────── */
+.register-page .form-input {
+  width: 100%;
+  font-size: 0.875rem;
+}
+
+.register-page .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* ── Responsive adjustments ──────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .register-card {
+    padding: 16px;
+  }
+  
+  .register-name-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .register-role-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Optional: Add a brand panel for larger screens (similar to login) ───── */
+@media (min-width: 1280px) {
+  .register-page {
+    padding: 24px;
+  }
+  
+  .register-container {
+    max-width: 600px;
+  }
+}

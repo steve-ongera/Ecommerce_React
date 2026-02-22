@@ -1,23 +1,30 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Eye, EyeOff, ShoppingBag } from 'lucide-react';
+import { Eye, EyeOff } from 'lucide-react';
 import { useAuthStore } from '../store';
 import toast from 'react-hot-toast';
+import '../styles/register.css';
 
 export default function RegisterPage() {
   const navigate = useNavigate();
   const { register } = useAuthStore();
   const [form, setForm] = useState({
-    username:'', email:'', first_name:'', last_name:'',
-    phone_number:'', password:'', password2:'', role:'customer'
+    username: '', email: '', first_name: '', last_name: '',
+    phone_number: '', password: '', password2: '', role: 'customer'
   });
   const [showPwd, setShowPwd] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (form.password !== form.password2) { toast.error('Passwords do not match'); return; }
-    if (form.password.length < 6) { toast.error('Password must be at least 6 characters'); return; }
+    if (form.password !== form.password2) { 
+      toast.error('Passwords do not match'); 
+      return; 
+    }
+    if (form.password.length < 6) { 
+      toast.error('Password must be at least 6 characters'); 
+      return; 
+    }
     setLoading(true);
     try {
       await register(form);
@@ -31,81 +38,196 @@ export default function RegisterPage() {
     } finally { setLoading(false); }
   };
 
-  const F = ({label, name, type='text', placeholder, required=true}) => (
-    <div>
-      <label className="block text-xs font-bold text-gray-600 mb-1">{label}{required&&<span className="text-red-400">*</span>}</label>
-      <input type={type} value={form[name]} onChange={e=>setForm({...form,[name]:e.target.value})}
-        className="form-input" placeholder={placeholder} required={required}/>
-    </div>
-  );
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setForm(prev => ({ ...prev, [name]: value }));
+  };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4" style={{background:'#f5f5f5'}}>
-      <div className="w-full max-w-lg">
-        <div className="text-center mb-6">
-          <Link to="/" className="inline-flex items-center gap-2 mb-3">
-            <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{background:'#f68b1e'}}>
-              <span className="text-white font-black text-lg">M</span>
+    <div className="register-page">
+      <div className="register-container">
+        <div className="register-header">
+          <Link to="/" className="register-logo-link">
+            <div className="register-logo-icon">
+              <span>M</span>
             </div>
-            <span className="text-xl font-black text-gray-900" style={{fontFamily:'Nunito,sans-serif'}}>Mkurugenzi</span>
+            <span className="register-logo-text">Mkurugenzi</span>
           </Link>
-          <h2 className="text-2xl font-black text-gray-900">Create Account</h2>
-          <p className="text-gray-500 text-sm mt-1">Join thousands of Kenyan shoppers</p>
+          <h2 className="register-header-title">Create Account</h2>
+          <p className="register-header-subtitle">Join thousands of Kenyan shoppers</p>
         </div>
 
-        <div className="bg-white rounded shadow-sm p-6">
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="grid grid-cols-2 gap-3">
-              <F label="First Name" name="first_name" placeholder="John"/>
-              <F label="Last Name" name="last_name" placeholder="Doe"/>
-            </div>
-            <F label="Username" name="username" placeholder="johndoe"/>
-            <F label="Email Address" name="email" type="email" placeholder="john@email.com"/>
-            <F label="Phone Number" name="phone_number" placeholder="07XXXXXXXX" required={false}/>
+        <div className="register-card">
+          <form onSubmit={handleSubmit} className="register-form">
+            <div className="register-name-row">
+              {/* First Name */}
+              <div className="register-field">
+                <label className="register-field-label">
+                  First Name<span className="register-required-star">*</span>
+                </label>
+                <input 
+                  type="text"
+                  name="first_name"
+                  value={form.first_name}
+                  onChange={handleInputChange}
+                  className="form-input" 
+                  placeholder="John" 
+                  required
+                />
+              </div>
 
-            <div>
-              <label className="block text-xs font-bold text-gray-600 mb-1">Account Type<span className="text-red-400">*</span></label>
-              <div className="grid grid-cols-2 gap-2">
-                {[{val:'customer',label:'🛒 Customer',sub:'Shop & buy'},
-                  {val:'vendor',label:'🏪 Vendor',sub:'Sell products'}].map(r => (
-                  <label key={r.val}
-                    className={`flex items-start gap-2 p-3 border-2 rounded cursor-pointer transition-all ${form.role===r.val ? 'border-orange-400 bg-orange-50' : 'border-gray-200'}`}>
-                    <input type="radio" name="role" value={r.val} checked={form.role===r.val}
-                      onChange={() => setForm({...form,role:r.val})} className="mt-0.5 accent-orange-500"/>
-                    <div>
-                      <p className="text-sm font-bold">{r.label}</p>
-                      <p className="text-xs text-gray-400">{r.sub}</p>
+              {/* Last Name */}
+              <div className="register-field">
+                <label className="register-field-label">
+                  Last Name<span className="register-required-star">*</span>
+                </label>
+                <input 
+                  type="text"
+                  name="last_name"
+                  value={form.last_name}
+                  onChange={handleInputChange}
+                  className="form-input" 
+                  placeholder="Doe" 
+                  required
+                />
+              </div>
+            </div>
+            
+            {/* Username */}
+            <div className="register-field">
+              <label className="register-field-label">
+                Username<span className="register-required-star">*</span>
+              </label>
+              <input 
+                type="text"
+                name="username"
+                value={form.username}
+                onChange={handleInputChange}
+                className="form-input" 
+                placeholder="johndoe" 
+                required
+              />
+            </div>
+
+            {/* Email */}
+            <div className="register-field">
+              <label className="register-field-label">
+                Email Address<span className="register-required-star">*</span>
+              </label>
+              <input 
+                type="email"
+                name="email"
+                value={form.email}
+                onChange={handleInputChange}
+                className="form-input" 
+                placeholder="john@email.com" 
+                required
+              />
+            </div>
+
+            {/* Phone Number */}
+            <div className="register-field">
+              <label className="register-field-label">
+                Phone Number
+              </label>
+              <input 
+                type="text"
+                name="phone_number"
+                value={form.phone_number}
+                onChange={handleInputChange}
+                className="form-input" 
+                placeholder="07XXXXXXXX"
+              />
+            </div>
+
+            {/* Role Selection */}
+            <div className="register-role-container">
+              <span className="register-role-label">
+                Account Type<span className="register-required-star">*</span>
+              </span>
+              <div className="register-role-grid">
+                {[
+                  { val: 'customer', label: '🛒 Customer', sub: 'Shop & buy' },
+                  { val: 'vendor', label: '🏪 Vendor', sub: 'Sell products' }
+                ].map(role => (
+                  <label 
+                    key={role.val}
+                    className={`register-role-card ${form.role === role.val ? 'register-role-card--selected' : ''}`}
+                  >
+                    <input 
+                      type="radio" 
+                      name="role" 
+                      value={role.val} 
+                      checked={form.role === role.val}
+                      onChange={handleInputChange} 
+                      className="register-role-radio"
+                    />
+                    <div className="register-role-content">
+                      <p className="register-role-title">{role.label}</p>
+                      <p className="register-role-subtitle">{role.sub}</p>
                     </div>
                   </label>
                 ))}
               </div>
             </div>
 
-            <div>
-              <label className="block text-xs font-bold text-gray-600 mb-1">Password<span className="text-red-400">*</span></label>
-              <div className="relative">
-                <input type={showPwd?'text':'password'} value={form.password} onChange={e=>setForm({...form,password:e.target.value})}
-                  className="form-input pr-10" placeholder="Min 6 characters" required minLength={6}/>
-                <button type="button" onClick={()=>setShowPwd(!showPwd)} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
-                  {showPwd ? <EyeOff size={16}/> : <Eye size={16}/>}
+            {/* Password */}
+            <div className="register-field">
+              <label className="register-field-label">
+                Password<span className="register-required-star">*</span>
+              </label>
+              <div className="register-password-wrapper">
+                <input 
+                  type={showPwd ? 'text' : 'password'}
+                  name="password"
+                  value={form.password}
+                  onChange={handleInputChange}
+                  className="form-input register-password-input" 
+                  placeholder="Min 6 characters" 
+                  required 
+                  minLength={6}
+                />
+                <button 
+                  type="button" 
+                  onClick={() => setShowPwd(!showPwd)} 
+                  className="register-password-toggle"
+                >
+                  {showPwd ? <EyeOff size={16} /> : <Eye size={16} />}
                 </button>
               </div>
             </div>
-            <div>
-              <label className="block text-xs font-bold text-gray-600 mb-1">Confirm Password<span className="text-red-400">*</span></label>
-              <input type="password" value={form.password2} onChange={e=>setForm({...form,password2:e.target.value})}
-                className="form-input" placeholder="Repeat password" required/>
+
+            {/* Confirm Password */}
+            <div className="register-field">
+              <label className="register-field-label">
+                Confirm Password<span className="register-required-star">*</span>
+              </label>
+              <input 
+                type="password"
+                name="password2"
+                value={form.password2}
+                onChange={handleInputChange}
+                className="form-input" 
+                placeholder="Repeat password" 
+                required
+              />
             </div>
 
-            <button type="submit" disabled={loading} className="w-full btn-primary py-3.5 text-base disabled:opacity-50">
+            <button 
+              type="submit" 
+              disabled={loading} 
+              className="btn-primary register-submit-btn"
+            >
               {loading ? 'Creating account...' : 'Create Account'}
             </button>
           </form>
 
-          <p className="text-center text-sm text-gray-500 mt-4">
-            Already have an account?{' '}
-            <Link to="/login" className="text-orange-500 font-bold hover:underline">Sign in</Link>
-          </p>
+          <div className="register-footer">
+            <p className="register-footer-text">
+              Already have an account?
+              <Link to="/login" className="register-footer-link">Sign in</Link>
+            </p>
+          </div>
         </div>
       </div>
     </div>
