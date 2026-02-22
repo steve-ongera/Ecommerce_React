@@ -1,44 +1,50 @@
-import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { Heart, ShoppingCart } from 'lucide-react'
-import ProductCard from '../components/product/ProductCard'
-import { useWishlistStore } from '../store/index.js'
+import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import ProductCard from '../components/product/ProductCard';
+import { useWishlistStore } from '../store/index.js';
+import '../styles/wishlist.css'; // Import the new CSS file
 
 export default function WishlistPage() {
-  const { wishlist, loading, fetchWishlist } = useWishlistStore()
+  const { wishlist, loading, fetchWishlist } = useWishlistStore();
 
-  useEffect(() => { fetchWishlist() }, [])
+  useEffect(() => { 
+    fetchWishlist(); 
+  }, [fetchWishlist]);
 
   return (
-    <div style={{ maxWidth: 1280, margin: '0 auto', padding: '24px 16px', minHeight: '60vh' }}>
-      <h1 style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 800, fontSize: 22, marginBottom: 20 }}>
-        My Wishlist {wishlist.length > 0 && `(${wishlist.length})`}
+    <div className="wishlist-container">
+      <h1 className="wishlist-header">
+        My Wishlist {wishlist.length > 0 && (
+          <span className="wishlist-count">({wishlist.length})</span>
+        )}
       </h1>
 
       {loading ? (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px,1fr))', gap: 12 }}>
+        <div className="wishlist-grid">
           {Array.from({ length: 6 }).map((_, i) => (
-            <div key={i} className="skeleton" style={{ height: 280, borderRadius: 8 }} />
+            <div key={i} className="wishlist-skeleton" />
           ))}
         </div>
       ) : wishlist.length === 0 ? (
-        <div style={{ textAlign: 'center', padding: '80px 16px' }}>
-          <Heart size={56} style={{ color: '#ddd', margin: '0 auto 16px' }} />
-          <h2 style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 800, marginBottom: 8 }}>
-            Your wishlist is empty
-          </h2>
-          <p style={{ color: 'var(--text-muted)', marginBottom: 24 }}>
+        <div className="wishlist-empty">
+          <div className="wishlist-empty-icon">
+            <i className="bi bi-heart"></i>
+          </div>
+          <h2 className="wishlist-empty-title">Your wishlist is empty</h2>
+          <p className="wishlist-empty-text">
             Save items you love and find them here later.
           </p>
-          <Link to="/products" className="btn-primary">Browse Products</Link>
+          <Link to="/products" className="btn-primary wishlist-empty-btn">
+            <i className="bi bi-shop"></i> Browse Products
+          </Link>
         </div>
       ) : (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px,1fr))', gap: 12 }}>
+        <div className="wishlist-grid">
           {wishlist.map((item) => (
             <ProductCard key={item.id} product={item.product} />
           ))}
         </div>
       )}
     </div>
-  )
+  );
 }

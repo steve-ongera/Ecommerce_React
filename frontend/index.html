@@ -2,12 +2,129 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/png" href="/mkurugenzi-logo.jpg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>frontend</title>
+    
+    <!-- Primary Meta Tags -->
+    <title>Mkurugenzi - Kenya's #1 Online Marketplace | Shop Smart, Live Better</title>
+    <meta name="title" content="Mkurugenzi - Kenya's #1 Online Marketplace | Shop Smart, Live Better">
+    <meta name="description" content="Mkurugenzi is Kenya's leading online marketplace. Shop from thousands of products including electronics, fashion, home appliances, and more. Enjoy fast delivery, secure M-Pesa payments, and unbeatable prices.">
+    <meta name="keywords" content="Mkurugenzi, Kenyan marketplace, online shopping Kenya, buy online Kenya, electronics Kenya, fashion Kenya, home appliances Kenya, M-Pesa payments, Jumia alternative, Kilimall, online store Kenya">
+    <meta name="author" content="Mkurugenzi">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="1 day">
+    <meta name="distribution" content="global">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mkurugenzi.co.ke/">
+    <meta property="og:title" content="Mkurugenzi - Kenya's #1 Online Marketplace">
+    <meta property="og:description" content="Shop from thousands of products with fast delivery and secure M-Pesa payments. Join thousands of happy Kenyan shoppers today!">
+    <meta property="og:image" content="https://mkurugenzi.co.ke/og-image.jpg">
+    <meta property="og:site_name" content="Mkurugenzi">
+    <meta property="og:locale" content="en_KE">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://mkurugenzi.co.ke/">
+    <meta property="twitter:title" content="Mkurugenzi - Kenya's #1 Online Marketplace">
+    <meta property="twitter:description" content="Shop from thousands of products with fast delivery and secure M-Pesa payments. Join thousands of happy Kenyan shoppers today!">
+    <meta property="twitter:image" content="https://mkurugenzi.co.ke/twitter-image.jpg">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="geo.region" content="KE">
+    <meta name="geo.placename" content="Nairobi">
+    <meta name="geo.position" content="-1.286389;36.817223">
+    <meta name="ICBM" content="-1.286389, 36.817223">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://mkurugenzi.co.ke/">
+    
+    <!-- Favicon for different platforms -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#f68b1e">
+    <meta name="msapplication-TileColor" content="#f68b1e">
+    <meta name="theme-color" content="#f68b1e">
+    
+    <!-- Structured Data / JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Mkurugenzi",
+      "url": "https://mkurugenzi.co.ke/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mkurugenzi.co.ke/products?search={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      },
+      "description": "Kenya's premier online marketplace for electronics, fashion, home goods, and more.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Mkurugenzi",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://mkurugenzi.co.ke/logo.png"
+        }
+      }
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Mkurugenzi",
+      "url": "https://mkurugenzi.co.ke/",
+      "logo": "https://mkurugenzi.co.ke/logo.png",
+      "sameAs": [
+        "https://www.facebook.com/mkurugenzi",
+        "https://twitter.com/mkurugenzi",
+        "https://www.instagram.com/mkurugenzi/",
+        "https://ke.linkedin.com/company/mkurugenzi"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+254-XXX-XXXXXX",
+        "contactType": "customer service",
+        "areaServed": "KE",
+        "availableLanguage": "en"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Nairobi",
+        "addressCountry": "KE"
+      }
+    }
+    </script>
+    
+    <!-- Preconnect for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    
+    <!-- Fonts and Icons (already in your CSS but preloading for performance) -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;1,6..12,400&family=Nunito:wght@700;800;900&display=swap">
+    <link rel="preload" as="style" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    
+    <!-- Optional: Add fallback content for noscript -->
+    <noscript>
+      <div style="text-align: center; padding: 40px; font-family: Arial, sans-serif;">
+        <h1>Mkurugenzi - Kenya's #1 Online Marketplace</h1>
+        <p>Please enable JavaScript to access Mkurugenzi's full shopping experience. Shop from thousands of products with fast delivery and secure M-Pesa payments.</p>
+        <p><a href="/">Return to Mkurugenzi</a></p>
+      </div>
+    </noscript>
   </body>
 </html>

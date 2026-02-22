@@ -1,0 +1,134 @@
+/* src/styles/wishlist.css */
+/* Wishlist page specific styles - leverages design tokens from index.css */
+
+/* ── Wishlist container ──────────────────────────────────────────────────── */
+.wishlist-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  min-height: 60vh;
+}
+
+/* ── Wishlist header ─────────────────────────────────────────────────────── */
+.wishlist-header {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 1.375rem;
+  margin-bottom: 20px;
+  color: var(--jumia-dark);
+}
+
+.wishlist-count {
+  color: var(--jumia-muted);
+  font-weight: 600;
+}
+
+/* ── Wishlist grid ───────────────────────────────────────────────────────── */
+.wishlist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+/* ── Empty state ─────────────────────────────────────────────────────────── */
+.wishlist-empty {
+  text-align: center;
+  padding: 80px 16px;
+}
+
+.wishlist-empty-icon {
+  font-size: 3.5rem;
+  color: #ddd;
+  margin: 0 auto 16px;
+  display: block;
+}
+
+.wishlist-empty-icon i {
+  font-size: 3.5rem;
+}
+
+.wishlist-empty-title {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: var(--jumia-dark);
+  margin-bottom: 8px;
+}
+
+.wishlist-empty-text {
+  color: var(--jumia-muted);
+  margin-bottom: 24px;
+  font-size: 0.875rem;
+}
+
+.wishlist-empty-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: var(--jumia-orange);
+  color: var(--jumia-white);
+  border-radius: 4px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.wishlist-empty-btn:hover {
+  background: var(--jumia-dark-orange);
+}
+
+/* ── Skeleton loading ────────────────────────────────────────────────────── */
+.wishlist-skeleton {
+  height: 280px;
+  border-radius: 8px;
+  animation: shimmer 1.5s infinite;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+  background-size: 800px 100%;
+}
+
+/* ── Utility overrides ───────────────────────────────────────────────────── */
+.wishlist-page .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* ── Responsive adjustments ───────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .wishlist-container {
+    padding: 16px 12px;
+  }
+  
+  .wishlist-header {
+    font-size: 1.25rem;
+    margin-bottom: 16px;
+  }
+  
+  .wishlist-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .wishlist-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  
+  .wishlist-empty {
+    padding: 60px 12px;
+  }
+  
+  .wishlist-empty-icon {
+    font-size: 3rem;
+  }
+  
+  .wishlist-empty-icon i {
+    font-size: 3rem;
+  }
+  
+  .wishlist-empty-title {
+    font-size: 1.125rem;
+  }
+}

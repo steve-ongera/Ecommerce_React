@@ -1,31 +1,22 @@
-import { Link } from 'react-router-dom'
-import { Home, Search, ArrowLeft } from 'lucide-react'
+import { Link } from 'react-router-dom';
+import '../styles/not-found.css'; // Import the new CSS file
 
 export default function NotFoundPage() {
   return (
-    <div style={{
-      minHeight: '60vh', display: 'flex', flexDirection: 'column',
-      alignItems: 'center', justifyContent: 'center',
-      padding: '40px 16px', textAlign: 'center',
-    }}>
-      <div style={{
-        fontSize: 120, fontFamily: "'Nunito', sans-serif", fontWeight: 900,
-        color: 'var(--jumia-orange)', lineHeight: 1, marginBottom: 8,
-      }}>404</div>
-      <h1 style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 800, fontSize: 28, marginBottom: 8 }}>
-        Page Not Found
-      </h1>
-      <p style={{ color: 'var(--text-muted)', fontSize: 15, maxWidth: 400, marginBottom: 32 }}>
+    <div className="not-found-container">
+      <div className="not-found-number">404</div>
+      <h1 className="not-found-title">Page Not Found</h1>
+      <p className="not-found-message">
         The page you're looking for doesn't exist or has been moved.
       </p>
-      <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', justifyContent: 'center' }}>
-        <Link to="/" className="btn-primary" style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-          <Home size={16} /> Back to Home
+      <div className="not-found-actions">
+        <Link to="/" className="btn-primary not-found-btn--primary">
+          <i className="bi bi-house"></i> Back to Home
         </Link>
-        <Link to="/products" className="btn-outline" style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-          <Search size={16} /> Browse Products
+        <Link to="/products" className="btn-outline not-found-btn--outline">
+          <i className="bi bi-search"></i> Browse Products
         </Link>
       </div>
     </div>
-  )
+  );
 }

@@ -1,0 +1,109 @@
+/* src/styles/not-found.css */
+/* 404 Not Found page specific styles - leverages design tokens from index.css */
+
+/* ── Not found container ─────────────────────────────────────────────────── */
+.not-found-container {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 16px;
+  text-align: center;
+}
+
+/* ── 404 number ──────────────────────────────────────────────────────────── */
+.not-found-number {
+  font-size: 7.5rem;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  color: var(--jumia-orange);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 640px) {
+  .not-found-number {
+    font-size: 5rem;
+  }
+}
+
+/* ── Title ───────────────────────────────────────────────────────────────── */
+.not-found-title {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 1.75rem;
+  color: var(--jumia-dark);
+  margin-bottom: 8px;
+}
+
+@media (max-width: 640px) {
+  .not-found-title {
+    font-size: 1.5rem;
+  }
+}
+
+/* ── Message ─────────────────────────────────────────────────────────────── */
+.not-found-message {
+  color: var(--jumia-muted);
+  font-size: 0.9375rem;
+  max-width: 400px;
+  margin-bottom: 32px;
+}
+
+@media (max-width: 640px) {
+  .not-found-message {
+    font-size: 0.875rem;
+  }
+}
+
+/* ── Action buttons ──────────────────────────────────────────────────────── */
+.not-found-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.not-found-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: all 0.15s;
+}
+
+.not-found-btn i {
+  font-size: 1rem;
+}
+
+.not-found-btn--primary {
+  background: var(--jumia-orange);
+  color: var(--jumia-white);
+}
+
+.not-found-btn--primary:hover {
+  background: var(--jumia-dark-orange);
+}
+
+.not-found-btn--outline {
+  background: transparent;
+  color: var(--jumia-orange);
+  border: 1.5px solid var(--jumia-orange);
+}
+
+.not-found-btn--outline:hover {
+  background: var(--jumia-light-orange);
+}
+
+/* ── Utility overrides ───────────────────────────────────────────────────── */
+.not-found-page .btn-primary,
+.not-found-page .btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
