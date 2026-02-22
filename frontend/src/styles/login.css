@@ -1,0 +1,281 @@
+/* src/styles/login.css */
+/* Login page specific styles - leverages design tokens from index.css */
+
+/* ── Page container ──────────────────────────────────────────────────────── */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  background: var(--jumia-gray);
+}
+
+/* ── Left panel (brand showcase) ────────────────────────────────────────── */
+.login-brand-panel {
+  display: none;
+  background: linear-gradient(135deg, var(--jumia-orange), var(--jumia-dark-orange));
+}
+
+@media (min-width: 1024px) {
+  .login-brand-panel {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px;
+  }
+}
+
+.login-brand-icon {
+  color: var(--jumia-white);
+  margin-bottom: 24px;
+  opacity: 0.9;
+}
+
+.login-brand-title {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: 2.25rem;
+  color: var(--jumia-white);
+  margin-bottom: 12px;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.login-brand-subtitle {
+  color: var(--jumia-light-orange);
+  text-align: center;
+  max-width: 320px;
+  font-size: 0.9rem;
+}
+
+/* Stats cards on brand panel */
+.login-stats-grid {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  width: 100%;
+  max-width: 380px;
+}
+
+.login-stat-card {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 12px 8px;
+  backdrop-filter: blur(4px);
+}
+
+.login-stat-number {
+  color: var(--jumia-white);
+  font-weight: 900;
+  font-size: 1.25rem;
+  font-family: 'Nunito', sans-serif;
+}
+
+.login-stat-label {
+  color: var(--jumia-light-orange);
+  font-size: 0.7rem;
+  margin-top: 2px;
+}
+
+/* ── Right panel (form area) ─────────────────────────────────────────────── */
+.login-form-panel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+@media (min-width: 640px) {
+  .login-form-panel {
+    padding: 32px;
+  }
+}
+
+.login-form-container {
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Header with logo */
+.login-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.login-logo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  text-decoration: none;
+}
+
+.login-logo-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--jumia-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-logo-icon span {
+  color: var(--jumia-white);
+  font-weight: 900;
+  font-size: 1.125rem;
+  font-family: 'Nunito', sans-serif;
+}
+
+.login-logo-text {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: var(--jumia-dark);
+  font-family: 'Nunito', sans-serif;
+}
+
+.login-header-title {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--jumia-dark);
+  font-family: 'Nunito', sans-serif;
+  margin-bottom: 4px;
+}
+
+.login-header-subtitle {
+  color: var(--jumia-muted);
+  font-size: 0.875rem;
+}
+
+/* Form */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.login-form-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #4a4a4a; /* Slightly darker than --jumia-muted */
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* Password input wrapper with toggle */
+.login-password-wrapper {
+  position: relative;
+}
+
+.login-password-input {
+  padding-right: 40px; /* Space for toggle button */
+}
+
+.login-password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--jumia-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s;
+}
+
+.login-password-toggle:hover {
+  color: var(--jumia-orange);
+}
+
+/* Submit button overrides */
+.login-submit-btn {
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 1rem;
+  margin-top: 8px;
+}
+
+.login-submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Footer links */
+.login-footer {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.login-footer-text {
+  font-size: 0.875rem;
+  color: var(--jumia-muted);
+}
+
+.login-footer-link {
+  color: var(--jumia-orange);
+  font-weight: 700;
+  text-decoration: none;
+  margin-left: 4px;
+}
+
+.login-footer-link:hover {
+  text-decoration: underline;
+}
+
+/* Demo credentials box */
+.login-demo-box {
+  margin-top: 24px;
+  padding: 16px;
+  background: #e6f3ff;  /* Light blue */
+  border-radius: 8px;
+  border: 1px solid #b8d9ff;
+}
+
+.login-demo-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #0066cc;  /* Dark blue */
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.login-demo-content {
+  font-size: 0.75rem;
+  color: #004d99;
+}
+
+.login-demo-code {
+  background: rgba(255, 255, 255, 0.5);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-weight: 600;
+}
+
+/* Utility overrides */
+.login-page .form-input {
+  /* Ensure form-input from index.css works with our padding overrides */
+  width: 100%;
+}
+
+.login-page .btn-primary {
+  /* Ensure button styles are applied */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
